@@ -6,7 +6,11 @@
  * Distributed under the terms of the Botan license
  */
 
+#include "sqlite3_export.h" // Defines the dllexport interface on Windows, must be before sqlite3.c
+
 #include <sqlite3.c>
+
+#ifdef SQLITE_HAS_CODEC
 
 #include "codec_interface.h"
 
@@ -283,3 +287,5 @@ int sqlite3_rekey(sqlite3* db, const void* zKey, int nKey)
 
     return rc;
 }
+
+#endif

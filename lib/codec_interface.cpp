@@ -43,7 +43,7 @@ void setReadIsWrite(void* codec)
 unsigned char* codecEncrypt(void* codec, int page, unsigned char* data,
                             unsigned int useWriteKey)
 {
-    return static_cast<Codec*>(codec)->encrypt(page, data, useWriteKey);
+    return static_cast<Codec*>(codec)->encrypt(page, data, useWriteKey > 0);
 }
 
 void codecDecrypt(void* codec, int page, unsigned char* data)
