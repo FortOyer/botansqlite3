@@ -12,7 +12,7 @@
 
 2. Within the top level folder: ``mkdir build && cd build``
 
-3. ````
+3. ``cmake .. -DBOTAN_LIB_DIR:PATH=<BOTAN_LIBRARY_PATH> -DBOTAN_INCLUDE_DIR:PATH=<BOTAN_INCLUDE_DIRECTORY>``
 
 4. ``make``
 
