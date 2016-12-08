@@ -59,34 +59,35 @@ public:
     Codec(void* db);
     Codec(const Codec* other, void* db);
 
-    void GenerateWriteKey(const char* userPassword, int passwordLength);
-    void DropWriteKey();
-    void SetWriteIsRead();
-    void SetReadIsWrite();
+    void generateWriteKey(const char* userPassword, int passwordLength);
+    void dropWriteKey();
+    void setWriteIsRead();
+    void setReadIsWrite();
 
-    unsigned char* Encrypt(int page, unsigned char* data, bool useWriteKey);
-    void Decrypt(int page, unsigned char *data);
+    unsigned char* encrypt(int page, unsigned char* data, bool useWriteKey);
+    void decrypt(int page, unsigned char *data);
 
-    void SetPageSize(int pageSize) { m_pageSize = pageSize; }
+    /**
+    * Delete old page, replace with new page.
+    * @param pageSize size of page in bytes.
+    */
+    void setPageSize(int pageSize);
 
-    bool HasReadKey() const { return m_hasReadKey; }
-    bool HasWriteKey() const { return m_hasWriteKey; }
-    void* GetDB() { return m_db; }
-    const char* GetAndResetError();
+    bool hasReadKey() const { return m_hasReadKey; }
+    bool hasWriteKey() const { return m_hasWriteKey; }
+    void* getDB() { return m_db; }
 
 private:
     Codec(void* db, bool hasReadKey, bool hasWriteKey, SymmetricKey readKey, SymmetricKey writeKey,
           SymmetricKey ivReadKey, SymmetricKey ivWriteKey);
 
-    InitializationVector GetIVForPage(u32bit page, bool useWriteKey);
+    InitializationVector getIVForPage(u32bit page, bool useWriteKey);
 
 private:
     bool m_hasReadKey;
     bool m_hasWriteKey;
 
     void* m_db;
-
-    const char* m_botanErrorMsg;
 
     std::unique_ptr<unsigned char[]> m_page;
     int m_pageSize;

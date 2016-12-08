@@ -10,60 +10,68 @@
 
 #include "codec.h"
 
-void* InitializeNewCodec(void *db) {
+void* initializeNewCodec(void* db)
+{
     return new Codec(db);
 }
 
-void* InitializeFromOtherCodec(const void *otherCodec, void *db) {
+void* initializeFromOtherCodec(const void* otherCodec, void* db)
+{
     return new Codec(static_cast<const Codec*>(otherCodec), db);
 }
 
-void GenerateWriteKey(void *codec, const char *userPassword, int passwordLength) {
-    static_cast<Codec*>(codec)->GenerateWriteKey(userPassword, passwordLength);
-}
-
-void DropWriteKey(void *codec) {
-    static_cast<Codec*>(codec)->DropWriteKey();
-}
-
-void SetWriteIsRead(void *codec) {
-    static_cast<Codec*>(codec)->SetWriteIsRead();
-}
-
-void SetReadIsWrite(void *codec) {
-    static_cast<Codec*>(codec)->SetReadIsWrite();
-}
-
-unsigned char* Encrypt(void *codec, int page, unsigned char *data, Bool useWriteKey) {
-    return static_cast<Codec*>(codec)->Encrypt(page, data, useWriteKey);
-}
-
-void Decrypt(void *codec, int page, unsigned char *data) {
-    static_cast<Codec*>(codec)->Decrypt(page, data);
-}
-
-void SetPageSize(void *codec, int pageSize) {
-    static_cast<Codec*>(codec)->SetPageSize(pageSize);
-}
-
-Bool HasReadKey(void *codec) {
-    return static_cast<Codec*>(codec)->HasReadKey();
-}
-
-Bool HasWriteKey(void *codec) {
-    return static_cast<Codec*>(codec)->HasWriteKey();
-}
-
-void* GetDB(void *codec) {
-    return static_cast<Codec*>(codec)->GetDB();
-}
-
-const char* GetAndResetError(void *codec)
+void generateWriteKey(void* codec, const char* userPassword, int passwordLength)
 {
-    return static_cast<Codec*>(codec)->GetAndResetError();
+    static_cast<Codec*>(codec)->generateWriteKey(userPassword, passwordLength);
 }
 
-void DeleteCodec(void *codec) {
-    Codec* deleteThisCodec = static_cast<Codec*>(codec);
-    delete deleteThisCodec;
+void dropWriteKey(void* codec)
+{
+    static_cast<Codec*>(codec)->dropWriteKey();
+}
+
+void setWriteIsRead(void* codec)
+{
+    static_cast<Codec*>(codec)->setWriteIsRead();
+}
+
+void setReadIsWrite(void* codec)
+{
+    static_cast<Codec*>(codec)->setReadIsWrite();
+}
+
+unsigned char* codecEncrypt(void* codec, int page, unsigned char* data,
+                            unsigned int useWriteKey)
+{
+    return static_cast<Codec*>(codec)->encrypt(page, data, useWriteKey);
+}
+
+void codecDecrypt(void* codec, int page, unsigned char* data)
+{
+    static_cast<Codec*>(codec)->decrypt(page, data);
+}
+
+void setPageSize(void* codec, int pageSize)
+{
+    static_cast<Codec*>(codec)->setPageSize(pageSize);
+}
+
+unsigned int hasReadKey(void* codec)
+{
+    return static_cast<Codec*>(codec)->hasReadKey();
+}
+
+unsigned int hasWriteKey(void* codec)
+{
+    return static_cast<Codec*>(codec)->hasWriteKey();
+}
+
+void* getDB(void* codec)
+{
+    return static_cast<Codec*>(codec)->getDB();
+}
+
+void deleteCodec(void *codec)
+{
+    delete static_cast<Codec*>(codec);
 }

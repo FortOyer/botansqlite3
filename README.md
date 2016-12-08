@@ -8,19 +8,17 @@
 
 ## Building Linux
 
-1. Extract sqlite3 amalgamation to a directory and add BotanSqlite3 source files
-     If desired, codec.h can be modified to tweak the encryption algothrithms and parameters. (Defaults to Twofish/XTS with 256 bit key)
+1. If desired, codec.h can be modified to tweak the encryption algothrithms and parameters. (Defaults to Twofish/XTS with 256 bit key)
 
 2. Within the top level folder: ``mkdir build && cd build``
 
-3. ``cmake .. -DBOTAN_LIB_DIR:PATH=<BOTAN_LIBRARY_PATH> -DBOTAN_INCLUDE_DIR:PATH=<BOTAN_INCLUDE_DIRECTORY>``
+3. ````
 
 4. ``make``
 
 ## Building Windows 64bit
 
-1. Extract sqlite3 amalgamation to a directory and add BotanSqlite3 source files
-     If desired, codec.h can be modified to tweak the encryption algothrithms and parameters. (Defaults to Twofish/XTS with 256 bit key)
+1. If desired, codec.h can be modified to tweak the encryption algothrithms and parameters. (Defaults to Twofish/XTS with 256 bit key)
 
 2. Within the top level folder: ``mkdir build && cd build``
 
@@ -33,5 +31,5 @@
 ## Testing
 
 1. Run the test
-      $ test_sqlite.exe
+      $ ./test_sqlite
 2. Look for "All seems good"

@@ -12,38 +12,37 @@
 #   ifdef __cplusplus
 extern "C" 
 {
-    typedef unsigned char Bool;
 #   endif
 
-    void InitializeBotan();
+    void initializeBotan();
 
-    void* InitializeNewCodec(void *db);
+    void* initializeNewCodec(void *db);
 
-    void* InitializeFromOtherCodec(const void *otherCodec, void *db);
+    void* initializeFromOtherCodec(const void *otherCodec, void *db);
 
-    void GenerateWriteKey(void *codec, const char *userPassword, int passwordLength);
+    void generateWriteKey(void *codec, const char *userPassword,
+                          int passwordLength);
 
-    void DropWriteKey(void *codec);
+    void dropWriteKey(void *codec);
 
-    void SetWriteIsRead(void *codec);
+    void setWriteIsRead(void *codec);
 
-    void SetReadIsWrite(void *codec);
+    void setReadIsWrite(void *codec);
 
-    unsigned char* Encrypt(void *codec, int page, unsigned char *data, Bool useWriteKey);
+    unsigned char* codecEncrypt(void *codec, int page, unsigned char *data,
+                                unsigned int useWriteKey);
 
-    void Decrypt(void *codec, int page, unsigned char *data);
+    void codecDecrypt(void *codec, int page, unsigned char *data);
 
-    void SetPageSize(void *codec, int pageSize);
+    void setPageSize(void *codec, int pageSize);
 
-    Bool HasReadKey(void *codec);
+    unsigned int hasReadKey(void *codec);
 
-    Bool HasWriteKey(void *codec);
+    unsigned int hasWriteKey(void *codec);
 
-    void* GetDB(void *codec);
+    void* getDB(void *codec);
 
-    const char* GetAndResetError(void *codec);
-
-    void DeleteCodec(void *codec);
+    void deleteCodec(void *codec);
 
 #   ifdef __cplusplus
 }
