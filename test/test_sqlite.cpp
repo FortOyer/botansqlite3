@@ -5,8 +5,6 @@
  * Distributed under the terms of the Botan license
  */
 
-#define SQLITE_HAS_CODEC 1
-
 #include <sqlite3.h>
 #include <stdio.h>
 #include <string.h>
