@@ -26,7 +26,6 @@ target_compile_definitions(sqlite3 PRIVATE
                            -DSQLITE_ENABLE_JSON1
                            -DSQLITE_ENABLE_RTREE
                            -DSQLITE_ENABLE_EXPLAIN_COMMENTS
-                           -DSQLITE_HAS_CODEC
 )
 
 GENERATE_EXPORT_HEADER(sqlite3
