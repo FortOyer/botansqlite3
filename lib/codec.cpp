@@ -18,8 +18,8 @@ Codec::Codec(void *db) :
 
 //Only used to copy main db key for an attached db
 Codec::Codec(const Codec* other, void *db) :
-    Codec(db, other->m_hasReadKey, other->m_hasWriteKey, other->m_readKey, other->m_ivReadKey,
-          other->m_writeKey, other->m_ivWriteKey)
+    Codec(db, other->m_hasReadKey, other->m_hasWriteKey, other->m_readKey, other->m_writeKey,
+          other->m_ivReadKey, other->m_ivWriteKey)
 { }
 
 Codec::Codec(void* db, bool hasReadKey, bool hasWriteKey, SymmetricKey readKey, SymmetricKey writeKey,
